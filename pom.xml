@@ -26,4 +26,8 @@
 
     </dependencies>
 
+    <build>
+        <finalName>jakarta-ee-live-code</finalName>
+    </build>
+
 </project>
