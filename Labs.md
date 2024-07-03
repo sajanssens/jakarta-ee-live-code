@@ -25,12 +25,12 @@
     3. Maak je tweede resource met een GET endpoint die een List van objecten teruggeeft als JSON.
     4. Breid die resource uit met: GET met queryparam, GET met pathparam, POST, PUT en DELETE.
        - test met bijv. de Http client in IDEA of met Postman.
-    5. Maak gebruik van sub resources: acties op één entity moeten in een aparte resource.
-    6. Bouw ondersteuning in voor XML-responses.
-    7. Zorg ervoor dat je JSON-array in je response een naam krijgt (zodat een client hierop kan selecteren): 
+    5. Maak een Dao/Repo voor je objecten.
+    6. Maak gebruik van sub resources: acties op één entity moeten in een aparte resource.
+    7. Bouw ondersteuning in voor XML-responses.
+    8. Zorg ervoor dat je JSON-array in je response een naam krijgt (zodat een client hierop kan selecteren): 
        - van unnamed `[ {..}, .. ]` naar named `{ "arraynaam": [ {..}, .. ] }`
-    8. Bouw een CORS filter.
-    9. Maak een Dao voor je objecten.
+    9. Bouw een CORS filter.
     10. Bouw JPA in.
     11. Handling errors implementeren m.b.v. exceptions en foutmeldingen.
     12. OpenApi/Swagger toevoegen.
