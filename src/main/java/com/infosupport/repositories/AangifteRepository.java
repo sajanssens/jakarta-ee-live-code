@@ -24,4 +24,12 @@ public class AangifteRepository {
         this.list.add(aangifte);
         return aangifte;
     }
+
+    public void remove(int id) {
+
+    }
+
+    public Aangifte get(int id) {
+        return this.list.get(id);
+    }
 }

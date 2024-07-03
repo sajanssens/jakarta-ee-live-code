@@ -6,6 +6,7 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
@@ -17,6 +18,8 @@ public class AangiftesResource {
     @Inject
     private AangifteRepository repo;
 
+    @Inject AangifteResource aangifteResource;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Aangifte> getAll() {
@@ -24,8 +27,13 @@ public class AangiftesResource {
     }
 
     @POST
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Aangifte add(Aangifte aangifte) {
         return repo.add(aangifte);
+    }
+
+    @Path("{id}")
+    public AangifteResource aangifteResource(@PathParam("id") int id) {
+        return this.aangifteResource.with(id);
     }
 }
