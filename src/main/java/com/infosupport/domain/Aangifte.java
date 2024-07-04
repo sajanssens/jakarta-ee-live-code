@@ -1,31 +1,15 @@
 package com.infosupport.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data @NoArgsConstructor
+@Builder @AllArgsConstructor
 public class Aangifte {
 
+    private int id;
     private String bsn;
     private double bedrag;
-
-    public Aangifte() {
-    }
-
-    public Aangifte(String bsn, double bedrag) {
-        this.bsn = bsn;
-        this.bedrag = bedrag;
-    }
-
-    public String getBsn() {
-        return bsn;
-    }
-
-    public void setBsn(String bsn) {
-        this.bsn = bsn;
-    }
-
-    public double getBedrag() {
-        return bedrag;
-    }
-
-    public void setBedrag(double bedrag) {
-        this.bedrag = bedrag;
-    }
 }

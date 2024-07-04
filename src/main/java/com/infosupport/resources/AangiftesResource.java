@@ -33,7 +33,7 @@ public class AangiftesResource {
     }
 
     @Path("{id}")
-    public AangifteResource aangifteResource(@PathParam("id") int id) {
+    public AangifteResource aangifte(@PathParam("id") int id) {
         return this.aangifteResource.with(id);
     }
 }

@@ -10,9 +10,10 @@ import java.util.List;
 public class AangifteRepository {
     private final List<Aangifte> list = new ArrayList<>(
             List.of(
-                    new Aangifte("16.33.86.146", 200.00),
-                    new Aangifte("16.33.86.147", 400.00),
-                    new Aangifte("16.33.86.148", 600.00)
+                    new Aangifte(1, "16.33.86.146", 200.00),
+                    Aangifte.builder().id(2).bsn("123").bedrag(100.56).build(),
+                    new Aangifte(3, "16.33.86.147", 400.00),
+                    new Aangifte(4, "16.33.86.148", 600.00)
             )
     );
 
