@@ -1,7 +1,7 @@
 package com.infosupport.resources;
 
 import com.infosupport.domain.Aangifte;
-import com.infosupport.repositories.AangifteRepository;
+import com.infosupport.repositories.AangifteListRepo;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.DELETE;
@@ -21,7 +21,7 @@ public class AangifteResource {
     private int id;
 
     @Inject
-    private AangifteRepository repo;
+    private AangifteListRepo repo;
 
     @DELETE
     public void remove() {

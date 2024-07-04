@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <server description="new server">
 
+    <variable name="MYSQL_HOSTNAME" defaultValue="localhost"/>
+    <variable name="MYSQL_PORT" defaultValue="3306"/>
+    <variable name="MYSQL_USE_SSL" defaultValue="true"/>
+
     <featureManager>
         <feature>restfulWS-3.1</feature>
         <feature>jsonb-3.0</feature>
         <feature>xmlBinding-4.0</feature>
         <feature>mpOpenAPI-3.1</feature>
+        <feature>persistence-3.1</feature>
     </featureManager>
+
+    <dataSource id="DefaultDataSource" jndiName="jdbc/mySqlDatasource">
+        <jdbcDriver libraryRef="MySQLLib"/>
+        <properties serverName="${MYSQL_HOSTNAME}" portNumber="${MYSQL_PORT}" useSSL="${MYSQL_USE_SSL}"
+                    databaseName="jee-live-code" user="root" password="root" serverTimezone="UTC"/>
+    </dataSource>
+
+    <library id="MySQLLib">
+        <fileset dir="${shared.resource.dir}/" includes="mysql*.jar"/>
+    </library>
 
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
 </server>

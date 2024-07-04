@@ -2,7 +2,8 @@ package com.infosupport.resources;
 
 import com.infosupport.domain.Aangifte;
 import com.infosupport.domain.Aangiftes;
-import com.infosupport.repositories.AangifteRepository;
+import com.infosupport.repositories.Ag;
+import com.infosupport.repositories.Repo;
 import com.infosupport.util.NotSecured;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -18,8 +19,8 @@ import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 @Path("aangiftes") // impliciet requestscoped
 public class AangiftesResource {
 
-    @Inject
-    private AangifteRepository repo;
+    @Inject @Ag
+    private Repo<Aangifte> repo;
 
     @Inject
     private AangifteResource aangifteResource;

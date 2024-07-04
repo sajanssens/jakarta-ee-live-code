@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ApplicationScoped // == singleton
-public class AangifteRepository {
+public class AangifteListRepo implements Repo<Aangifte> {
     private final List<Aangifte> list = new ArrayList<>(
             List.of(
                     new Aangifte(1, "16.33.86.146", 200.00),
@@ -28,6 +28,11 @@ public class AangifteRepository {
 
     public void remove(int id) {
 
+    }
+
+    @Override
+    public Aangifte update(Aangifte aangifte) {
+        return null;
     }
 
     public Aangifte get(int id) {
