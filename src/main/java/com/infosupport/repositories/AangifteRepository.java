@@ -31,6 +31,6 @@ public class AangifteRepository {
     }
 
     public Aangifte get(int id) {
-        return this.list.get(id);
+        return this.list.stream().filter(a -> a.getId() == id).findAny().get();
     }
 }
