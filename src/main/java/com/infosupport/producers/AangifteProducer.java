@@ -10,14 +10,15 @@ import jakarta.jms.Queue;
 @Stateless
 public class AangifteProducer {
 
-    @Resource(lookup = "jms/aangifte")
+    @Resource(name = "jms/aangifteJmsQueue")
     private Queue queue;
 
-    @Resource(lookup = "jms/connectionFactory")
+    @Resource(name = "jms/connectionFactory")
     private ConnectionFactory connectionFactory;
 
     @Schedule(hour = "*", minute = "*", second = "*/1", persistent = false)
-    public void send(AangifteDto dto) {
+    public void send() {
+        AangifteDto dto = new AangifteDto("1234");
         System.out.println("About to send message: " + dto);
         try (var context = connectionFactory.createContext()) {
             JMSProducer producer = context.createProducer();

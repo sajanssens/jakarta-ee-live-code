@@ -5,7 +5,13 @@ import jakarta.jms.JMSException;
 import jakarta.jms.Message;
 import jakarta.jms.MessageListener;
 
-@MessageDriven(name = "aangifteMdb")
+@MessageDriven(name = "aangifteMdb"
+        // ,
+        // activationConfig = {
+        //         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "jakarta.jms.Queue"),
+        //         @ActivationConfigProperty(propertyName = "destination", propertyValue = "java:app/aangifteQueue")
+        // }
+)
 public class AangifteConsumer implements MessageListener {
 
     @Override

@@ -6,13 +6,17 @@
     <variable name="MYSQL_USE_SSL" defaultValue="true"/>
 
     <featureManager>
+        <!-- <feature>jakartaee-10.0</feature>-->
+        <feature>mpOpenAPI-3.1</feature>
         <feature>restfulWS-3.1</feature>
         <feature>jsonb-3.0</feature>
         <feature>xmlBinding-4.0</feature>
-        <feature>mpOpenAPI-3.1</feature>
         <feature>persistence-3.1</feature>
         <feature>enterpriseBeans-4.0</feature>
         <feature>messaging-3.1</feature>
+        <feature>messagingClient-3.0</feature>
+        <feature>messagingServer-3.0</feature>
+        <feature>mpHealth-4.0</feature>
     </featureManager>
 
     <!--    Persistence-->
@@ -28,22 +32,30 @@
 
     <!--    For JMS:-->
     <messagingEngine>
-        <queue id="aangifteQueue"/>
+        <queue id="aangifteJmsQueue"/>
     </messagingEngine>
 
     <jmsQueueConnectionFactory jndiName="jms/connectionFactory">
-        <properties.wasJms remoteServerAddress="localhost:7276:BootStrapBasicMessaging"/>
+        <properties.wasJms remoteServerAddress="localhost:7276:BootstrapBasicMessaging"/>
     </jmsQueueConnectionFactory>
 
     <jmsQueue id="aangifteJmsQueue" jndiName="jms/aangifte">
-        <properties.wasJms queueName="aangifteQueue"/>
+        <properties.wasJms queueName="aangifteJmsQueue"/>
     </jmsQueue>
 
-    <jmsActivationSpec id="jakarta-ee-live-code/aangifteMdb"> <!--syntax: <war-name>/<mdb-name> -->
+    <jmsActivationSpec id="jakarta-ee-live-code/AangifteConsumer"> <!--syntax: <war-name>/<mdb-name> -->
         <properties.wasJms destinationRef="aangifteJmsQueue" destinationType="jakarta.jms.Queue"/>
     </jmsActivationSpec>
 
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
 
+    <!-- Automatically expand WAR files and EAR files -->
+    <applicationManager autoExpand="true"/>
+
+    <!--&lt;!&ndash; Configures the application on a specified context root &ndash;&gt;
+    <webApplication contextRoot="/app-name" location="app-name.war" />-->
+
+    <!-- Default SSL configuration enables trust for default certificates from the Java runtime -->
+    <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
 </server>
 

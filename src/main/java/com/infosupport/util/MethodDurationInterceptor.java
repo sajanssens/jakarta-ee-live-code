@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 import static java.time.temporal.ChronoUnit.NANOS;
 
-// Also declared in beans.xml
+// Also declared in beans_gone.xml
 // @MeasureMethodDuration @Interceptor // AOP = Aspect Oriented Programming
 public class MethodDurationInterceptor {
 
