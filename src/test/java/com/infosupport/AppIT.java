@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 public class AppIT {
 
     @Test
-    void whenGetAangiftesItWorks() {
+    void whenGetAangiftesIsCalledItWorks() {
         given().contentType("application/json")
                 .when().get("/api/aangiftes")
                 .then().statusCode(200);
