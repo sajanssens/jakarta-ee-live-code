@@ -18,7 +18,7 @@ public class AppDeploymentConfig implements SharedContainerConfiguration {
     // create docker container based on the Dockerfile
     @Container
     public static ApplicationContainer app = new ApplicationContainer()
-            .withAppContextRoot("/rest")
+            .withAppContextRoot("/jakarta-ee-live-code")
             .withExposedPorts(9080, 9443)
             .withEnv("MYSQL_HOSTNAME", "jee-testcontainers-it")
             .withEnv("MYSQL_PORT", "3306")

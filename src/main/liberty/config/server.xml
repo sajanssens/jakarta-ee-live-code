@@ -43,7 +43,7 @@
         <properties.wasJms queueName="aangifteJmsQueue"/>
     </jmsQueue>
 
-    <jmsActivationSpec id="jakarta-ee-live-code/AangifteConsumer"> <!--syntax: <war-name>/<mdb-name> -->
+    <jmsActivationSpec id="jakarta-ee-live-code/aangifteMdb"> <!--syntax: <war-name>/<mdb-name> -->
         <properties.wasJms destinationRef="aangifteJmsQueue" destinationType="jakarta.jms.Queue"/>
     </jmsActivationSpec>
 
@@ -56,6 +56,6 @@
     <webApplication contextRoot="/app-name" location="app-name.war" />-->
 
     <!-- Default SSL configuration enables trust for default certificates from the Java runtime -->
-    <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
+    <ssl id="defaultSSLConfig" trustDefaultCerts="true"/>
 </server>
 
