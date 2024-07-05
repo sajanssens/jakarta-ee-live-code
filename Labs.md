@@ -31,15 +31,15 @@
     8. Zorg ervoor dat je JSON-array in je response een naam krijgt (zodat een client hierop kan selecteren): 
        - van unnamed `[ {..}, .. ]` naar named `{ "arraynaam": [ {..}, .. ] }`
     9. Bouw een CORS filter.
-   10. Maak een filter die checkt of je ingelogd bent. Zo niet, dan geef je een `401` terug. 
-       Dit kun je nabootsen door in de request een header op te nemen: `Authorization: true`.
-       Dit filter moet NIET worden uitgevoerd als er `@NotSecured` boven een methode staat.
-    10. Bouw JPA in.
-    11. Handling errors implementeren m.b.v. exceptions en foutmeldingen.
-    12. OpenApi/Swagger toevoegen.
-    13. Connectedness implementeren.
-    14. JWT implementeren.
-    15. Integratietest maken met behulp van `test-containers`.
+    10. Maak een filter die checkt of je ingelogd bent. Zo niet, dan geef je een `401` terug. 
+        Dit kun je nabootsen door in de request een header op te nemen: `Authorization: true`.
+        Dit filter moet NIET worden uitgevoerd als er `@NotSecured` boven een methode staat.
+    11. Bouw JPA in.
+    12. Handling errors implementeren m.b.v. exceptions en foutmeldingen.
+    13. OpenApi/Swagger toevoegen.
+    14. Connectedness implementeren.
+    15. JWT implementeren.
+    16. Integratietest maken met behulp van `test-containers`.
 
 3. CDI (TODO)
 4. EJB (TODO)

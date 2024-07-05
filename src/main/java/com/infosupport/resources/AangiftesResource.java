@@ -4,7 +4,9 @@ import com.infosupport.domain.Aangifte;
 import com.infosupport.domain.Aangiftes;
 import com.infosupport.repositories.Ag;
 import com.infosupport.repositories.Repo;
+import com.infosupport.util.MyEJBSingleton;
 import com.infosupport.util.NotSecured;
+import jakarta.annotation.PreDestroy;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -23,6 +25,9 @@ public class AangiftesResource {
     private Repo<Aangifte> repo;
 
     @Inject
+    private MyEJBSingleton ejb;
+
+    @Inject
     private AangifteResource aangifteResource;
 
     @NotSecured
@@ -32,6 +37,7 @@ public class AangiftesResource {
     public Aangiftes getAll(
             @Parameter(description = "to search on aangifte text (containing)")
             @QueryParam("q") String q) {
+        ejb.doeIets();
         return new Aangiftes(repo.findAll());
     }
 
@@ -46,4 +52,5 @@ public class AangiftesResource {
         System.out.println("AangifteResource");
         return this.aangifteResource.with(id);
     }
+
 }

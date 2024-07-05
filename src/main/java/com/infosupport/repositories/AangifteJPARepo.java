@@ -4,6 +4,7 @@ import com.infosupport.domain.Aangifte;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 
@@ -19,8 +20,12 @@ public class AangifteJPARepo implements Repo<Aangifte> {
     }
 
     @Override
+    @Transactional
     public Aangifte add(Aangifte aangifte) {
-        return null;
+        // em.getTransaction().begin();
+        em.persist(aangifte);
+        // em.getTransaction().commit();
+        return aangifte;
     }
 
     @Override
