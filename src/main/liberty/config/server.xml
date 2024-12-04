@@ -19,7 +19,7 @@
         <feature>mpHealth-4.0</feature>
     </featureManager>
 
-    <!--    Persistence-->
+    <!-- Persistence-->
     <dataSource id="DefaultDataSource" jndiName="jdbc/mySqlDatasource">
         <jdbcDriver libraryRef="MySQLLib"/>
         <properties serverName="${MYSQL_HOSTNAME}" portNumber="${MYSQL_PORT}" useSSL="${MYSQL_USE_SSL}"
@@ -30,24 +30,28 @@
         <fileset dir="${shared.resource.dir}/" includes="mysql*.jar"/>
     </library>
 
-    <!--    For JMS:-->
+    <!-- For JMS:-->
+    <!--    This is the message broker, built-in in OpenLiberty (being WAS JMS),  with one queue. -->
     <messagingEngine>
-        <queue id="aangifteJmsQueue"/>
+        <queue id="aangiftes"/>
     </messagingEngine>
 
+    <!--    A factory to be used in my code via @Resource, to get my JMS context -->
     <jmsQueueConnectionFactory jndiName="jms/connectionFactory">
         <properties.wasJms remoteServerAddress="localhost:7276:BootstrapBasicMessaging"/>
     </jmsQueueConnectionFactory>
 
-    <jmsQueue id="aangifteJmsQueue" jndiName="jms/aangifte">
-        <properties.wasJms queueName="aangifteJmsQueue"/>
+    <!--    The JmsQueue to be used in my code via @Resource, coupled to the queue on wasJms -->
+    <jmsQueue id="aangiftesJmsQueue" jndiName="jms/aangiftesQueue">
+        <properties.wasJms queueName="aangiftes"/>
     </jmsQueue>
 
-    <jmsActivationSpec id="jakarta-ee-live-code/aangifteMdb"> <!--syntax: <war-name>/<mdb-name> -->
-        <properties.wasJms destinationRef="aangifteJmsQueue" destinationType="jakarta.jms.Queue"/>
+    <!--    My MessageDrivenBean, being AangifteConsumer, that's annotated with @MessageDriven(name = "aangifteMdb") -->
+    <jmsActivationSpec id="jakarta-ee-live-code/aangifteMdb"> <!--syntax: <war-name>/<mdb-name> (ENC syntax)-->
+        <properties.wasJms destinationRef="aangiftesJmsQueue" destinationType="jakarta.jms.Queue"/>
     </jmsActivationSpec>
 
-    <!--    General :-->
+    <!-- General :-->
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
 
     <!-- Automatically expand WAR files and EAR files -->

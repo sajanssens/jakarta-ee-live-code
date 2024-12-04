@@ -7,10 +7,12 @@ import jakarta.jms.ConnectionFactory;
 import jakarta.jms.JMSProducer;
 import jakarta.jms.Queue;
 
+import java.time.LocalDateTime;
+
 @Stateless
 public class AangifteProducer {
 
-    @Resource(name = "jms/aangifte")
+    @Resource(name = "jms/aangiftesQueue")
     private Queue queue;
 
     @Resource(name = "jms/connectionFactory")
@@ -18,7 +20,7 @@ public class AangifteProducer {
 
     @Schedule(hour = "*", minute = "*", second = "*/1", persistent = false)
     public void send() {
-        AangifteDto dto = new AangifteDto("1234");
+        AangifteDto dto = new AangifteDto(LocalDateTime.now().toString());
         System.out.println("About to send message: " + dto);
         try (var context = connectionFactory.createContext()) {
             JMSProducer producer = context.createProducer();
