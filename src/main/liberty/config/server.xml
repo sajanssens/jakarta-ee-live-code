@@ -47,6 +47,7 @@
         <properties.wasJms destinationRef="aangifteJmsQueue" destinationType="jakarta.jms.Queue"/>
     </jmsActivationSpec>
 
+    <!--    General :-->
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
 
     <!-- Automatically expand WAR files and EAR files -->

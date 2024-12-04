@@ -9,7 +9,7 @@ import jakarta.jms.MessageListener;
         // ,
         // activationConfig = {
         //         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "jakarta.jms.Queue"),
-        //         @ActivationConfigProperty(propertyName = "destination", propertyValue = "java:app/aangifteQueue")
+        //         @ActivationConfigProperty(propertyName = "destination", propertyValue = "java:app/aangifte")
         // }
 )
 public class AangifteConsumer implements MessageListener {
